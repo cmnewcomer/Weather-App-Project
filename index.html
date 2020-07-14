@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script
+      src="https://kit.fontawesome.com/d44f387b6a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="src/styles.css"
+      media="screen"
+    />
+  </head>
+
+  <body>
+    <div id="app">
+      <form>
+        <div class="form-group">
+          <label for="exampleInputSearch1">
+            Search City
+          </label>
+          <div class="row">
+            <div class="col">
+              <input
+                type="City"
+                class="form-control"
+                aria-describedby="SearchCity"
+              />
+            </div>
+            <div class="col">
+              <button type="submit" class="btn btn-primary">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="currentCity">
+        <div class="row">
+          <div class="col-sm-4">
+            <h1>
+              <strong>De Pinte</strong>
+            </h1>
+          </div>
+          <div class="col-sm-4">
+            <h1>
+              66º / 45º
+            </h1>
+          </div>
+          <div class="col-sm-4">
+            <h1>
+              +
+            </h1>
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <p>
+        <strong>Currently:</strong>
+        Mostly Sunny
+      </p>
+
+      <div class="currentWeather">
+        <p>
+          3:05pm
+        </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-7" id="currentTemp">
+              75°
+            </div>
+            <div class="col-3" id="degreeType">C/<strong>F</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="moreWeather">
+        <i class="fas fa-chevron-down"></i>
+        <hr />
+      </div>
+
+      <div class="FiveDay">
+        <h3>
+          5 Day Forecast
+        </h3>
+        <div class="container">
+          <div class="row" id="days">
+            <div class="col-md-2">
+              Tomorrow<br />
+              <span id="emojis">☀️</span> <br />65/47
+            </div>
+            <div class="col-md-2">
+              Monday
+              <br />
+              <span id="emojis">
+                ⛅️
+              </span>
+              <br />
+              62/56
+            </div>
+            <div class="col-md-2">
+              Tuesday
+              <br />
+              <span id="emojis">
+                🌧
+              </span>
+              <br />
+              57/41
+            </div>
+            <div class="col-md-2">
+              Wednesday
+              <br />
+              <span id="emojis">
+                🌬
+              </span>
+              <br />
+              58/40
+            </div>
+            <div class="col-md-2">
+              Thursday
+              <br />
+              <span id="emojis">
+                🌧
+              </span>
+              <br />
+              56/41
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <br />
+
+      <div class="favoriteCities">
+        <div class="row">
+          <div class="col">
+            <h3>
+              Favorite Cities
+            </h3>
+          </div>
+          <div class="col" id="editCities">
+            +/-
+          </div>
+        </div>
+        <div class="row" id="savedCities">
+          <div class="col-sm-2">
+            63º
+            <br />
+            <span id="emojis">
+              🌤
+            </span>
+            <br />
+            Paris
+          </div>
+          <div class="col-sm-2">
+            54º
+            <br />
+            <span id="emojis">
+              ☀️
+            </span>
+            <br />
+            London
+          </div>
+          <div class="col-sm-2">
+            80º
+            <br />
+            <span id="emojis">
+              ☀️
+            </span>
+            <br />
+            Sydney
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

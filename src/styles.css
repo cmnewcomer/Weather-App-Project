@@ -1,0 +1,72 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 50px;
+  background-color: #e0ecff;
+}
+
+.currentCity {
+  margin-top: 60px;
+  max-width: 800px;
+}
+
+h1 {
+  font-weight: 100;
+}
+
+.currentWeather {
+  border: 1px solid #4f6893;
+  border-radius: 10px;
+  padding: 10px;
+  background-image: url("../images/partlysunny.jpeg");
+  background-size: 1500px;
+  max-width: 800px;
+}
+
+#currentTemp {
+  font-size: 100px;
+  text-align: right;
+  font-weight: 200;
+  padding-bottom: 50px;
+}
+
+#degreeType {
+  padding-top: 30px;
+  font-size: 20px;
+}
+
+hr {
+}
+
+h3 {
+  line-height: 60px;
+}
+
+.FiveDay {
+  padding: 10px;
+}
+#days {
+  text-align: center;
+}
+
+#emojis {
+  font-size: 30px;
+}
+
+.favoriteCities {
+  border: 1px solid #4f6893;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #cbdaf2;
+  max-width: 800px;
+}
+
+#savedCities {
+  text-align: center;
+}
+
+#editCities {
+  text-align: right;
+  font-weight: 100px;
+  line-height: 60px;
+  font-size: 20px;
+}
