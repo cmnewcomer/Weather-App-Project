@@ -4,13 +4,36 @@ body {
   background-color: #e0ecff;
 }
 
-.currentCity {
+#currentCity {
   margin-top: 60px;
   max-width: 800px;
 }
 
-h1 {
-  font-weight: 100;
+#cityName {
+  font-weight: normal;
+}
+
+#currentLocation {
+  background-color: #3169a2;
+  color: #ffffff;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size: 12px;
+  margin: 0px;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+#currentLocation:hover {
+  font-weight: bold;
+}
+#searchbutton {
+  background-color: #3169a2;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size: 15px;
+  margin: 0px;
+  padding: 10px;
 }
 
 .currentWeather {
@@ -29,12 +52,17 @@ h1 {
   padding-bottom: 50px;
 }
 
-#degreeType {
+.col-3 {
   padding-top: 30px;
   font-size: 20px;
 }
+a {
+  color: #000000;
+}
 
-hr {
+a:hover {
+  font-weight: bold;
+  color: #000000;
 }
 
 h3 {
@@ -43,6 +71,7 @@ h3 {
 
 .FiveDay {
   padding: 10px;
+  max-width: 800px;
 }
 #days {
   text-align: center;
@@ -69,4 +98,27 @@ h3 {
   font-weight: 100px;
   line-height: 60px;
   font-size: 20px;
+}
+
+#currentTime {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+#currentDate {
+  font-size: 20px;
+}
+
+.footnotes {
+  text-align: left;
+  line-height: 30px;
+  margin-top: 20px;
+}
+
+.githubLink {
+  text-decoration: underline;
+}
+
+githubLink:hover {
+  font-weight: bold;
 }
