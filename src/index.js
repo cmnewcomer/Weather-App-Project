@@ -1,74 +1,139 @@
-let city = prompt("Enter a city");
+//feature 1 display current date and time
 
-city = city.toLowerCase();
-city = city.trim();
+function formDate() {
+  let now = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
 
-let cityWeather = [
-  {
-    name: "paris",
-    ctemp: 22,
-    ftemp: 72,
-    humidity: 50,
-  },
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-  {
-    name: "london",
-    ctemp: 19,
-    ftemp: 66,
-    humidity: 60,
-  },
+  let month = months[now.getMonth()];
+  let year = now.getFullYear();
+  let date = now.getDate();
 
-  {
-    name: "austin",
-    ctemp: 29,
-    ftemp: 84,
-    humidity: 80,
-  },
-
-  {
-    name: "new york",
-    ctemp: 22,
-    ftemp: 72,
-    humidity: 78,
-  },
-  {
-    name: "brussels",
-    ctemp: 21,
-    ftemp: 70,
-    humidity: 50,
-  },
-];
-
-if (city === cityWeather[0].name) {
-  alert(
-    `It is currently ${cityWeather[0].ctemp}º (${cityWeather[0].ftemp}º) in ${cityWeather[0].name} with a humidity of ${cityWeather[0].humidity}%`
-  );
-} else {
-  if (city === cityWeather[1].name) {
-    alert(
-      `It is currently ${cityWeather[1].ctemp}º (${cityWeather[1].ftemp}º) in ${cityWeather[1].name} with a humidity of ${cityWeather[1].humidity}%`
-    );
-  } else {
-    if (city === cityWeather[2].name) {
-      alert(
-        `It is currently ${cityWeather[2].ctemp}º (${cityWeather[2].ftemp}º) in ${cityWeather[2].name} with a humidity of ${cityWeather[2].humidity}%`
-      );
-    } else {
-      if (city === cityWeather[3].name) {
-        alert(
-          `It is currently ${cityWeather[3].ctemp}º (${cityWeather[3].ftemp}º) in ${cityWeather[3].name} with a humidity of ${cityWeather[3].humidity}%`
-        );
-      } else {
-        if (city === cityWeather[4].name) {
-          alert(
-            `It is currently ${cityWeather[4].ctemp}º (${cityWeather[4].ftemp}º) in ${cityWeather[4].name} with a humidity of ${cityWeather[4].humidity}%`
-          );
-        } else {
-          alert(
-            `Sorry, we know the weather for this city, try going to https://www.google.com/search?q=weather+${city}`
-          );
-        }
-      }
-    }
-  }
+  return `${day}, ${month} ${date}, ${year}`;
 }
+
+function formTime() {
+  let now = new Date();
+  let hour = now.getHours();
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  return `${hour}:${minutes}`;
+}
+let currentDate = document.querySelector("#currentDate");
+let currentTime = document.querySelector("#currentTime");
+currentDate.innerHTML = formDate();
+currentTime.innerHTML = formTime();
+
+//feature search engine, replace city name and citie's current temperature
+function searchCity(event) {
+  event.preventDefault();
+  let citySearchInput = document.querySelector("#city-text-input");
+  let city = document.querySelector("#cityName");
+  city.innerHTML = `${citySearchInput.value}`;
+  let apiKey = "fbbef86de25dd6b2558fa7cb141039b2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&units=metric`;
+  console.log(citySearchInput.value);
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showCityTemperatureC);
+}
+
+//temperature in celcius
+function showCityTemperatureC(response) {
+  console.log(response.data);
+  console.log(response.data.main.temp);
+  let temperature = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#currentTemp");
+  console.log(temperatureElement);
+  temperatureElement.innerHTML = `${temperature}`;
+  let tempMin = Math.round(response.data.main.temp_min);
+  let tempMax = Math.round(response.data.main.temp_max);
+  console.log(tempMin);
+  console.log(tempMax);
+  let tempMinElement = document.querySelector("#low");
+  let tempMaxElement = document.querySelector("#high");
+  console.log(tempMaxElement);
+  console.log(tempMinElement);
+  tempMinElement.innerHTML = `${tempMin}`;
+  tempMaxElement.innerHTML = `${tempMax}`;
+}
+
+//temperature in Farenheit
+
+function searchCityFTemp(event) {
+  event.preventDefault();
+  let citySearchInput = document.querySelector("#city-text-input");
+  let city = document.querySelector("#cityName");
+  city.innerHTML = `${citySearchInput.value}`;
+  let apiKey = "fbbef86de25dd6b2558fa7cb141039b2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&units=imperial`;
+  console.log(citySearchInput.value);
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showCityTemperatureF);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
+
+// Current Longetude & Latitude Temperature
+function showPosition(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  let apiKey = "fbbef86de25dd6b2558fa7cb141039b2";
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  axios.get(`${apiUrl}`).then(showCurrentCityTemperature);
+}
+
+function showCurrentCityTemperature(response) {
+  console.log(response.data.main.temp);
+  let temperature = Math.round(response.data.main.temp);
+  let currentCity = response.data.name;
+  let displayTemp = document.querySelector("#currentTemp");
+  let displayCity = document.querySelector("#cityName");
+  displayTemp.innerHTML = `${temperature}º`;
+  displayCity.innerHTML = `${currentCity}`;
+  let tempMin = Math.round(response.data.main.temp_min);
+  let tempMax = Math.round(response.data.main.temp_max);
+  console.log(tempMin);
+  console.log(tempMax);
+  let tempMinElement = document.querySelector("#low");
+  let tempMaxElement = document.querySelector("#high");
+  console.log(tempMaxElement);
+  console.log(tempMinElement);
+  tempMinElement.innerHTML = `${tempMin}`;
+  tempMaxElement.innerHTML = `${tempMax}`;
+}
+
+function currentPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+let currentLocalTemp = document.querySelector("#currentLocation");
+currentLocalTemp.addEventListener("click", currentPosition);
+
+navigator.geolocation.getCurrentPosition(showPosition);
