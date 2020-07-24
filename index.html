@@ -23,18 +23,18 @@
           Search City
         </label>
         <div class="row">
-          <div class="col">
+          <div class="col-sm-6">
             <input type="text" placeholder="Search for a City" class="form-control" aria-describedby="SearchCity"
               autocomplete="off" autofocus="on" id="city-text-input" />
           </div>
-          <div class="col">
+          <div class="col-sm-2">
             <button type="submit" class="btn btn-primary" id="searchbutton">
               Search
             </button>
           </div>
-          <div class="col">
+          <div class="col-sm-2" title="Current Location">
             <button type="submit" id="currentLocation">
-              Current Location
+              <i class="fas fa-map-marker-alt"></i>
             </button>
           </div>
         </div>
@@ -65,7 +65,7 @@
 
   <p>
     <strong>Currently:</strong>
-    Mostly Sunny
+   <span id=currentlyText> Mostly Sunny </span>
   </p>
 
   <div class="currentWeather">
