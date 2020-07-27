@@ -2,7 +2,6 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 50px;
   background-color: #e0ecff;
-  max-width: 950px;
 }
 
 #currentCity {
@@ -68,6 +67,17 @@ h3 {
   line-height: 60px;
 }
 
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
 .FiveDay {
   padding: 10px;
   max-width: 800px;
@@ -108,16 +118,16 @@ h3 {
   font-size: 20px;
 }
 
-.footnotes {
-  text-align: left;
-  line-height: 30px;
-  margin-top: 20px;
+.data {
+  font-weight: 400;
 }
 
-.githubLink {
-  text-decoration: underline;
-}
-
-githubLink:hover {
-  font-weight: bold;
+.weatherdata {
+  color: #ffffff;
+  background-color: #3169a2;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size: 15px;
+  margin: 0px;
+  padding: 10px;
 }
