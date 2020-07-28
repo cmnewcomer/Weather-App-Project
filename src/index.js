@@ -10,7 +10,7 @@ function showPosition(position) {
 }
 
 function showCurrentCityTemperature(response) {
-  console.log(response.data.weather[0].description);
+  console.log(response.data.wind.speed);
   let temperature = Math.round(response.data.main.temp);
   let currentCity = response.data.name;
   let displayTemp = document.querySelector("#currentTemp");
@@ -31,6 +31,10 @@ function showCurrentCityTemperature(response) {
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#currentWeatherDescription");
   descriptionElement.innerHTML = `${description}`;
+
+  let windspeed = response.data.wind.speed;
+  let windspeedElement = document.querySelector("#windspeedNumber");
+  windspeedElement.innerHTML = `${windspeed} m/s`;
 }
 
 function currentPosition(event) {
@@ -57,6 +61,7 @@ function searchCity(event) {
 
 //temperature in celcius
 function showCityTemperatureC(response) {
+  console.log(response.data.wind.speed);
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#currentTemp");
   temperatureElement.innerHTML = `${temperature}`;
@@ -71,6 +76,11 @@ function showCityTemperatureC(response) {
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#currentWeatherDescription");
   descriptionElement.innerHTML = `${description}`;
+
+  console.log(response.data);
+  let windspeed = response.data.wind.speed;
+  let windspeedElement = document.querySelector("#windspeedNumber");
+  windspeedElement.innerHTML = `${windspeed} m/s`;
 }
 
 //temperature in Farenheit
