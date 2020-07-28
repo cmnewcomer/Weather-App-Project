@@ -24,16 +24,16 @@
           Search City
         </label>
         <div class="row">
-          <div class="col">
+          <div class="col-6">
             <input type="text" placeholder="Search for a City" class="form-control" aria-describedby="SearchCity"
               autocomplete="off" autofocus="on" id="city-text-input" />
           </div>
-          <div class="col">
+          <div class="col-sm-2">
             <button type="submit" class="btn btn-primary" id="searchbutton">
               Search
             </button>
           </div>
-          <div class="col-sm-2" title="Current Location">
+          <div class="col-sm-1" title="Current Location">
             <button type="submit" id="currentLocation">
               <i class="fas fa-map-marker-alt"></i>
             </button>
@@ -47,12 +47,12 @@
     <div class="row">
       <div class="col-sm-4">
         <h1 id="cityName">
-          De Pinte
+          ----
         </h1>
       </div>
       <div class="col-sm-4">
         <h1>
-          <span id="high">66</span>º / <span id="low">45</span>º
+          <span id="high">--</span>º / <span id="low">--</span>º
         </h1>
       </div>
       <div class="col-sm-4">
@@ -66,7 +66,7 @@
 
   <p>
     <strong>Currently:</strong>
-    Mostly Sunny
+    <span id="currentWeatherDescription">----</span>
   </p>
 
   <div class="currentWeather">
@@ -75,7 +75,7 @@
 
     <div class="row">
       <div class="col-7" id="currentTemp">
-        23
+        -- <span>º</span>
       </div>
       <div class="col-3"><a href="#" id="celciusLink">C</a>/<a href="#" id="farenheitLink">F</a></div>
     </div>
@@ -119,9 +119,9 @@
         </ul>
       </div>
     </div>
-    <hr />
+   
   </div>
-
+<hr class="divider"/>
   <div class="FiveDay">
     <h3>
       5 Day Forecast
@@ -171,7 +171,7 @@
       </div>
     </div>
   </div>
-  <hr />
+  <hr class="divider" />
   <br />
 
   <div class="favoriteCities">
