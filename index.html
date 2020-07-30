@@ -69,15 +69,15 @@
     <span id="currentWeatherDescription">----</span>
   </p>
 
-  <div class="currentWeather">
+  <div class="currentWeather" id="displayWeather">
     <p> <span id="currentDate">
-        Date </span> <br /> <span id="currentTime"> Time </span </p>
+        Date </span> <br /> <span id="currentTime"> Time </span> </p>
 
     <div class="row">
       <div class="col-7" id="currentTemp">
         -- <span>º</span>
       </div>
-      <div class="col-3"><a href="#" id="celciusLink">C</a>/<a href="#" id="farenheitLink">F</a></div>
+      <div class="col-3" ><span id="celciusFarenheit"><a href="#" id="celciusLink">C</a>/<a href="#" id="farenheitLink">F</a></span></div>
     </div>
   </div>
 
@@ -92,21 +92,21 @@
         <div class="col-6">
           <ul>
             <li>
-              Sunrise: <span class="data" id="sunriseTime">7:04</span>
+              Sunrise: <span class="data" id="sunriseTime">-:--</span>
             </li>
            
             <li>
-              Windspeed: <span class="data" id="windspeedNumber">s 6 mph</span>
+              Windspeed: <span class="data" id="windspeedNumber">--m/s</span>
             </li>
           </ul>
         </div>
         <div class="col-6">
           <ul>
             <li>
-              Sunset: <span class="data" id="sunsetTime"> 19:30 </span>
+              Sunset: <span class="data" id="sunsetTime"> --:--</span>
             </li>
             <li>
-              Humidity: <span class="data" id="humidityPercentage"> 93%</span>
+              Humidity: <span class="data" id="humidityPercentage"> --%</span>
             </li>
            
           </ul>

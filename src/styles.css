@@ -38,12 +38,12 @@ body {
   padding: 10px;
 }
 
-.currentWeather {
+#displayWeather {
   border: 1px solid #4f6893;
   border-radius: 10px;
   padding: 10px;
-  background-image: url("../images/partlysunny.jpeg");
-  background-size: 1500px;
+  background-image: url("");
+  background-size: 800px;
   max-width: 800px;
 }
 
@@ -52,6 +52,7 @@ body {
   text-align: right;
   font-weight: 200;
   padding-bottom: 50px;
+  color: #000000;
 }
 
 #currentWeatherDescription {
@@ -131,10 +132,16 @@ ul {
 #currentTime {
   font-weight: bolder;
   font-size: 20px;
+  color: #000000;
+}
+
+#celciusFarenheit {
+  color: #000000;
 }
 
 #currentDate {
   font-size: 20px;
+  color: #000000;
 }
 
 .data {

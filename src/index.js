@@ -7,6 +7,75 @@ function currentPosition(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
+//background image
+function backgroundimage(response) {
+  let id = response.data.weather[0].id;
+  console.log(id);
+  /*if (id > 799 && id < 802) {
+    alert("Yay");
+  }
+  if (id > 802 && id < 805) {
+    alert("yup");
+  }*/
+
+  if (id > 800 && id < 803) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/partlysunnyID801-802.jpg)";
+  }
+  if (id > 699 && id < 782) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/foggyID700-781.jpg)";
+  }
+  if (id > 299 && id < 322) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/rainID300-321.jpg)";
+    document.getElementById("currentTemp").style.color = "#ffffff";
+    document.getElementById("currentDate").style.color = "#ffffff";
+    document.getElementById("currentTime").style.color = "#ffffff";
+    document.getElementById("celciusFarenheit").style.color = "#ffffff";
+    document.getElementById("celciusLink").style.color = "#ffffff";
+    document.getElementById("farenheitLink").style.color = "#ffffff";
+  }
+  if (id > 599 && id < 622) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/snowID600-621.jpg)";
+  }
+  if (id > 199 && id < 233) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/ThunderstormID200-232.jpg)";
+    document.getElementById("currentTemp").style.color = "#ffffff";
+    document.getElementById("currentDate").style.color = "#ffffff";
+    document.getElementById("currentTime").style.color = "#ffffff";
+    document.getElementById("celciusFarenheit").style.color = "#ffffff";
+    document.getElementById("celciusLink").style.color = "#ffffff";
+    document.getElementById("farenheitLink").style.color = "#ffffff";
+  }
+  if (id > 802 && id < 805) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/cloudyID803-804.jpg)";
+    document.getElementById("currentTemp").style.color = "#ffffff";
+    document.getElementById("currentDate").style.color = "#ffffff";
+    document.getElementById("currentTime").style.color = "#ffffff";
+    document.getElementById("celciusFarenheit").style.color = "#ffffff";
+    document.getElementById("celciusLink").style.color = "#ffffff";
+    document.getElementById("farenheitLink").style.color = "#ffffff";
+  }
+  if (id > 499 && id < 532) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/rainID300-321.jpg)";
+    document.getElementById("currentTemp").style.color = "#ffffff";
+    document.getElementById("currentTemp").style.color = "#ffffff";
+    document.getElementById("currentDate").style.color = "#ffffff";
+    document.getElementById("currentTime").style.color = "#ffffff";
+    document.getElementById("celciusFarenheit").style.color = "#ffffff";
+    document.getElementById("celciusLink").style.color = "#ffffff";
+    document.getElementById("farenheitLink").style.color = "#ffffff";
+  }
+  if (id == 800) {
+    document.getElementById("displayWeather").style.backgroundImage =
+      "url(images/clearskyID800.jpg)";
+  }
+}
 // Current Longetude & Latitude Temperature
 function showPosition(position) {
   //console.log(position.coords.latitude);
@@ -18,10 +87,11 @@ function showPosition(position) {
   axios.get(`${apiUrl}`).then(showCurrentCityTemperature);
   axios.get(`${apiUrl}`).then(sunriseTime);
   axios.get(`${apiUrl}`).then(sunsetTime);
+  axios.get(`${apiUrl}`).then(backgroundimage);
 }
 
 function showCurrentCityTemperature(response) {
-  //console.log(response.data.main);
+  console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   let currentCity = response.data.name;
   let displayTemp = document.querySelector("#currentTemp");
@@ -64,6 +134,7 @@ function searchCity(event) {
   axios.get(`${apiUrl}`).then(showCityTemperatureC);
   axios.get(`${apiUrl}`).then(sunriseTime);
   axios.get(`${apiUrl}`).then(sunsetTime);
+  axios.get(`${apiUrl}`).then(backgroundimage);
 }
 
 //temperature in celcius
