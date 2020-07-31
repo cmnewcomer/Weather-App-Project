@@ -15,14 +15,17 @@ function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showTemperature);
   axios.get(`${apiUrl}`).then(sunriseTime);
   axios.get(`${apiUrl}`).then(sunsetTime);
   axios.get(`${apiUrl}`).then(backgroundimage);
+  axios.get(`${forecastApiUrl}`).then(forecast);
 }
-
-function showTemperature(response) {
+function forecast(response) {
   console.log(response.data);
+}
+function showTemperature(response) {
   celciusTemperature = response.data.main.temp;
   let temperature = Math.round(celciusTemperature);
   let currentCity = response.data.name;
@@ -54,7 +57,6 @@ function showTemperature(response) {
 //background image change
 function backgroundimage(response) {
   let id = response.data.weather[0].id;
-  console.log(id);
 
   if (id > 800 && id < 803) {
     document.getElementById("displayWeather").style.backgroundImage =
