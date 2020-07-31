@@ -47,7 +47,7 @@
     <div class="row">
       <div class="col-sm-4">
         <h1 id="cityName">
-          ----
+          Loading...
         </h1>
       </div>
       <div class="col-sm-4">
@@ -55,11 +55,7 @@
           <span id="high">--</span>º / <span id="low">--</span>º
         </h1>
       </div>
-      <div class="col-sm-4">
-        <h1>
-          +
-        </h1>
-      </div>
+      
     </div>
   </div>
   <br />
@@ -76,7 +72,11 @@
 
     <div class="row">
       <div class="col-7" id="currentTemp">
-       <span > -- </span> 
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
       </div>
       <div class="col-3 cflinks" ><span id="celciusFarenheit"><a href="#" id="celciusLink" class="active">C</a>|<a href="#" id="farenheitLink" class="active">F</a></span></div>
     </div>
