@@ -1,103 +1,12 @@
 body {
   font-family: "Montserrat", sans-serif;
-  margin: 50px;
+  margin: 0 auto;
+  display: block;
+  padding: 50px;
   background-color: #e0ecff;
-}
-
-#degreeSign {
-  font-size: 50px;
-  text-align: right;
-  font-weight: 200;
-  padding-bottom: 10px;
-  margin-top: 0px;
-  color: #000000;
-}
-#search-form {
-  max-width: 1100px;
-}
-
-.currentCity {
-  margin-top: 20px;
-  max-width: 1100px;
-}
-
-#cityName {
-  font-weight: normal;
-}
-
-#currentLocation {
-  background-color: #e0ecff;
-  border: 0px solid #e0ecff;
-  color: #3169a2;
-  font-size: 30px;
-  margin: 0px;
-  text-align: left;
-}
-
-#currentLocation:hover {
-  font-weight: bold;
-}
-#searchbutton {
-  background-color: #3169a2;
+  border: 0.5 px solid #000000;
   border-radius: 5px;
-  border: 1px solid #000000;
-  font-size: 15px;
-  margin: 0px;
-  padding: 10px;
-}
-
-#displayWeather {
-  border: 1px solid #4f6893;
-  border-radius: 10px;
-  padding: 10px;
-  background-image: url("");
-
-  background-size: 800px;
-  max-width: 800px;
-}
-
-#currentTemp {
-  font-size: 100px;
-  text-align: right;
-  font-weight: 200;
-  padding-bottom: 50px;
-  color: #000000;
-}
-
-#currentWeatherDescription {
-  text-transform: capitalize;
-}
-
-.col-3 {
-  padding-top: 30px;
-  font-size: 20px;
-}
-
-hr {
-  width: 60%;
-  min-width: 800px;
-  position: absolute;
-}
-
-#celciusLink {
-  cursor: default;
-  text-decoration: none;
-}
-
-#farenheitLink {
-  cursor: default;
-  text-decoration: none;
-}
-
-.cflinks .active {
-  cursor: default;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.cflinks .active:hover {
-  cursor: default;
-  text-decoration: none;
+  max-width: 900px;
 }
 
 h3 {
@@ -115,39 +24,53 @@ ul {
   font-weight: 600;
 }
 
-.moreWeather {
-  max-width: 600px;
-}
-
-.FiveDay {
+#searchbutton {
+  background-color: #3169a2;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  font-size: 15px;
+  margin: 0px;
   padding: 10px;
-  max-width: 800px;
-}
-#days {
-  text-align: center;
 }
 
-#emojis {
+#currentLocation {
+  background-color: #e0ecff;
+  border: 0px solid #e0ecff;
+  color: #3169a2;
   font-size: 30px;
+  margin: 0px;
+  text-align: left;
 }
 
-.favoriteCities {
+#currentLocation:hover {
+  font-weight: bold;
+}
+
+.currentCity {
+  margin-top: 20px;
+  max-width: 1100px;
+}
+
+#cityName {
+  font-weight: normal;
+}
+
+#currentWeatherDescription {
+  text-transform: capitalize;
+}
+
+#displayWeather {
   border: 1px solid #4f6893;
   border-radius: 10px;
   padding: 10px;
-  background-color: #cbdaf2;
+  background-image: url("");
+  background-size: 800px;
   max-width: 800px;
 }
 
-#savedCities {
-  text-align: center;
-}
-
-#editCities {
-  text-align: right;
-  font-weight: 100px;
-  line-height: 60px;
+#currentDate {
   font-size: 20px;
+  color: #000000;
 }
 
 #currentTime {
@@ -156,17 +79,46 @@ ul {
   color: #000000;
 }
 
+#currentTemp {
+  font-size: 100px;
+  text-align: right;
+  font-weight: 200;
+  padding-bottom: 50px;
+  color: #000000;
+}
+
+.col-3 {
+  padding-top: 30px;
+  font-size: 20px;
+}
+
+.cflinks .active {
+  cursor: default;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cflinks .active:hover {
+  cursor: default;
+  text-decoration: none;
+}
+
 #celciusFarenheit {
   color: #000000;
 }
 
-#currentDate {
-  font-size: 20px;
-  color: #000000;
+#celciusLink {
+  cursor: default;
+  text-decoration: none;
 }
 
-.data {
-  font-weight: 400;
+#farenheitLink {
+  cursor: default;
+  text-decoration: none;
+}
+
+.moreWeather {
+  max-width: 600px;
 }
 
 .weatherdata {
@@ -179,3 +131,35 @@ ul {
   padding: 10px;
   max-width: 600px;
 }
+
+.data {
+  font-weight: 400;
+}
+
+.FiveDay {
+  padding: 10px;
+  max-width: 800px;
+  border: 1px solid #4f6893;
+  border-radius: 10px;
+  padding: 10px;
+  background-size: 800px;
+  margin-top: 30px;
+}
+
+#days {
+  text-align: center;
+}
+
+#emojis {
+  font-size: 30px;
+}
+
+/*#degreeSign {
+  font-size: 50px;
+  text-align: right;
+  font-weight: 200;
+  padding-bottom: 10px;
+  margin-top: 0px;
+  color: #000000;
+}
+*/
