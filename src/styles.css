@@ -23,7 +23,9 @@ ul {
   line-height: 30px;
   font-weight: 600;
 }
-
+#city-text-input {
+  margin-bottom: 20px;
+}
 #searchbutton {
   background-color: #3169a2;
   border-radius: 5px;
@@ -47,11 +49,16 @@ ul {
 }
 
 .currentCity {
-  margin-top: 20px;
-  max-width: 1100px;
+  margin-top: 40px;
 }
 
 #cityName {
+  font-weight: normal;
+  font-size: 35px;
+}
+
+#highLow {
+  font-size: 35px;
   font-weight: normal;
 }
 
