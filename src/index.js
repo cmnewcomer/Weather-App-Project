@@ -20,11 +20,30 @@ function showPosition(position) {
   axios.get(`${apiUrl}`).then(sunriseTime);
   axios.get(`${apiUrl}`).then(sunsetTime);
   axios.get(`${apiUrl}`).then(backgroundimage);
-  axios.get(`${forecastApiUrl}`).then(forecast);
+  axios.get(`${forecastApiUrl}`).then(showForecast);
 }
-function forecast(response) {
-  console.log(response.data);
+
+//feature search engine, replace city name and city's current temperature
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", searchCity);
+
+function searchCity(event) {
+  event.preventDefault();
+  let citySearchInput = document.querySelector("#city-text-input");
+  let city = document.querySelector("#cityName");
+  city.innerHTML = `${citySearchInput.value}`;
+  let apiKey = "fbbef86de25dd6b2558fa7cb141039b2";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&units=metric&appid=${apiKey}`;
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${citySearchInput.value}&appid=${apiKey}&units=metric`;
+  console.log(citySearchInput.value);
+  axios.get(`${apiUrl}`).then(showTemperature);
+  axios.get(`${apiUrl}`).then(sunriseTime);
+  axios.get(`${apiUrl}`).then(sunsetTime);
+  axios.get(`${apiUrl}`).then(backgroundimage);
+  axios.get(`${apiUrl}`).then(showFarenheightTemp);
+  axios.get(`${forecastApiUrl}`).then(showForecast);
 }
+
 function showTemperature(response) {
   celciusTemperature = response.data.main.temp;
   let temperature = Math.round(celciusTemperature);
@@ -52,6 +71,39 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   let humidityElement = document.querySelector("#humidityPercentage");
   humidityElement.innerHTML = `${humidity}${humidityUnit}`;
+}
+
+//celciusTemperature Variable
+let celciusTemperature = null;
+
+//temperature in Farenheit
+
+let fLink = document.querySelector("#farenheitLink");
+fLink.addEventListener("click", showFarenheightTemp);
+
+let cLink = document.querySelector("#celciusLink");
+cLink.addEventListener("click", showCelciusTemp);
+
+function showCelciusTemp(event) {
+  event.preventDefault();
+  let celciusTemp = document.querySelector("#currentTemp");
+  let celciusValue = celciusTemperature;
+  let roundedCValue = Math.round(celciusValue);
+  let degreeSign = `º`;
+  celciusTemp.innerHTML = `${roundedCValue}${degreeSign}`;
+  cLink.classList.add("active");
+  fLink.classList.remove("active");
+}
+
+function showFarenheightTemp(event) {
+  event.preventDefault();
+  let farenheitTemp = document.querySelector("#currentTemp");
+  let farenheitValue = (celciusTemperature * 9) / 5 + 32;
+  let roundedFValue = Math.round(farenheitValue);
+  let degreeSign = `º`;
+  farenheitTemp.innerHTML = `${roundedFValue}${degreeSign}`;
+  fLink.classList.add("active");
+  cLink.classList.remove("active");
 }
 
 //background image change
@@ -140,25 +192,6 @@ function backgroundimage(response) {
   }
 }
 
-//feature search engine, replace city name and city's current temperature
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", searchCity);
-
-function searchCity(event) {
-  event.preventDefault();
-  let citySearchInput = document.querySelector("#city-text-input");
-  let city = document.querySelector("#cityName");
-  city.innerHTML = `${citySearchInput.value}`;
-  let apiKey = "fbbef86de25dd6b2558fa7cb141039b2";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${citySearchInput.value}&units=metric&appid=${apiKey}`;
-  console.log(citySearchInput.value);
-  axios.get(`${apiUrl}`).then(showTemperature);
-  axios.get(`${apiUrl}`).then(sunriseTime);
-  axios.get(`${apiUrl}`).then(sunsetTime);
-  axios.get(`${apiUrl}`).then(backgroundimage);
-  axios.get(`${apiUrl}`).then(showFarenheightTemp);
-}
-
 //sunrise and sunset times
 
 function sunriseTime(response) {
@@ -188,7 +221,41 @@ function sunsetTime(response) {
   }
   sunsetElement.innerHTML = `${sunsetHour}:${sunsetMinute}`;
 }
-//feature 1 display current date and time
+
+//hourly forecast
+function showForecast(response) {
+  console.log(response.data.list);
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+  <div class="col-md-2" id="hour">
+    <span>${forecastTime(forecast.dt * 1000)}</span>
+      <img 
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png" alt="${forecast.weather[0].main}" width="80"/>
+        <span>${Math.round(forecast.main.temp_max)}°</span>/
+        <span>${Math.round(forecast.main.temp_min)}°</span>
+  </div>`;
+  }
+}
+
+//forecast Time
+function forecastTime(timestamp) {
+  let date = new Date(timestamp);
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+  return `${hour}:${minutes}`;
+}
+
+// date and time
 
 function formDate() {
   let now = new Date();
@@ -234,39 +301,8 @@ function formTime() {
   }
   return `${hour}:${minutes}`;
 }
+
 let currentDate = document.querySelector("#currentDate");
 let currentTime = document.querySelector("#currentTime");
 currentDate.innerHTML = formDate();
 currentTime.innerHTML = formTime();
-
-//celciusTemperature Variable
-let celciusTemperature = null;
-//temperature in Farenheit
-
-let fLink = document.querySelector("#farenheitLink");
-fLink.addEventListener("click", showFarenheightTemp);
-
-let cLink = document.querySelector("#celciusLink");
-cLink.addEventListener("click", showCelciusTemp);
-
-function showCelciusTemp(event) {
-  event.preventDefault();
-  let celciusTemp = document.querySelector("#currentTemp");
-  let celciusValue = celciusTemperature;
-  let roundedCValue = Math.round(celciusValue);
-  let degreeSign = `º`;
-  celciusTemp.innerHTML = `${roundedCValue}${degreeSign}`;
-  cLink.classList.add("active");
-  fLink.classList.remove("active");
-}
-
-function showFarenheightTemp(event) {
-  event.preventDefault();
-  let farenheitTemp = document.querySelector("#currentTemp");
-  let farenheitValue = (celciusTemperature * 9) / 5 + 32;
-  let roundedFValue = Math.round(farenheitValue);
-  let degreeSign = `º`;
-  farenheitTemp.innerHTML = `${roundedFValue}${degreeSign}`;
-  fLink.classList.add("active");
-  cLink.classList.remove("active");
-}
