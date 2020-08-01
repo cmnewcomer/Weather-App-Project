@@ -232,12 +232,12 @@ function showForecast(response) {
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
-  <div class="col-md-2" id="hour">
-    <span>${forecastTime(forecast.dt * 1000)}</span>
+  <div class="col-sm-2" id="hour">
+    <span>${forecastTime(forecast.dt * 1000)}</span><br />
       <img 
         src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon
-        }@2x.png" alt="${forecast.weather[0].main}" width="80"/>
+        }@2x.png" alt="${forecast.weather[0].main}" width="80"/><br />
         <span>${Math.round(forecast.main.temp_max)}°</span>/
         <span>${Math.round(forecast.main.temp_min)}°</span>
   </div>`;

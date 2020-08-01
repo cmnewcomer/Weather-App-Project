@@ -156,6 +156,8 @@ ul {
 #hour {
   font-size: 15px;
   line-height: 0px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 #imageEmoji {
